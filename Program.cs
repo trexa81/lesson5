@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using System;
+using System.Linq;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -21,7 +23,12 @@ namespace lesson5
             string filetime = "time.txt";
             File.WriteAllText(filetime, time);
             File.AppendAllLines("startup.txt", File.ReadLines("time.txt"));
+
             //добавим бинарный файл
+            
+            var house = Console.ReadLine().Split( ' ').Select(byte.Parse).ToArray();
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(new FileStream("house.bin", FileMode.OpenOrCreate), house);
         }
 
     }
