@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace lesson5 
 {
@@ -20,6 +21,7 @@ namespace lesson5
             string filetime = "time.txt";
             File.WriteAllText(filetime, time);
             File.AppendAllLines("startup.txt", File.ReadLines("time.txt"));
+            //добавим бинарный файл
         }
 
     }
