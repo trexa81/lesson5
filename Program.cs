@@ -4,19 +4,22 @@ using System.IO;
 namespace lesson5 
 {
     class Program
-    {   //new Message
+    {   
         static void Main(string[] args)
         {
-            //добавим файл
+            //добавим файл startup.txt
+
             Console.WriteLine("Введите текст");
             var text = Console.ReadLine();
-            string filename = "text.txt";
+            string filename = "startup.txt";
             File.WriteAllText(filename, text);
-                        //добавим дату
 
-            string time = DateTime.Now.ToString();
-            string filetime = "startup.txt";
+            //добавим дату
+
+            string time = ("\t" + DateTime.Now.ToString("HH:mm:ss"));
+            string filetime = "time.txt";
             File.WriteAllText(filetime, time);
+            File.AppendAllLines("startup.txt", File.ReadLines("time.txt"));
         }
 
     }
